@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PolicyPilot AI Agent</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">P</div>
+        <div>
+          <h2>PolicyPilot</h2>
+          <p>Enterprise AI Support Agent</p>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Project Scope</h3>
+        <p>
+          A production-aware AI agent for enterprise FAQ support,
+          policy lookup, and structured summarization.
+        </p>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Core Features</h3>
+        <ul>
+          <li>FAQ lookup</li>
+          <li>Policy assistance</li>
+          <li>Support routing</li>
+          <li>Text summarization</li>
+          <li>Safety refusal layer</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Suggested Queries</h3>
+        <button class="quick-btn" onclick="fillPrompt('What is the leave policy?')">Leave policy</button>
+        <button class="quick-btn" onclick="fillPrompt('How do I reset my password?')">Password reset</button>
+        <button class="quick-btn" onclick="fillPrompt('Who do I contact for laptop support?')">Laptop support</button>
+        <button class="quick-btn" onclick="fillPrompt('What is the remote work policy?')">Remote work</button>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Google-style AI workflow demo</p>
+          <h1>PolicyPilot Dashboard</h1>
+        </div>
+        <div class="status-pill">● Agent Active</div>
+      </header>
+
+      <section class="hero-card">
+        <div class="hero-text">
+          <h2>Production-Aware Internal Support Assistant</h2>
+          <p>
+            PolicyPilot improves internal support workflows by combining
+            tool-based routing, grounded responses, and safe AI interaction.
+          </p>
+          <div class="hero-tags">
+            <span>AI Agent</span>
+            <span>FAQ Tooling</span>
+            <span>Safe Responses</span>
+            <span>Enterprise Workflow</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="chat-card">
+        <div class="chat-header">
+          <div>
+            <h3>Agent Workspace</h3>
+            <p>Ask policy, FAQ, IT support, or summarization queries.</p>
+          </div>
+        </div>
+
+        <div class="chat-box" id="chatBox">
+          <div class="message bot">
+            <div class="message-label">PolicyPilot</div>
+            Hello. I can help with policy questions, support routing, and summarizing pasted text.
+          </div>
+        </div>
+
+        <div class="input-area">
+          <textarea id="userInput" placeholder="Type your message here... Example: What is the leave policy?"></textarea>
+
+          <div class="input-actions">
+            <button class="secondary-btn" onclick="fillPrompt('summarize: The support team received multiple employee reports about account lockout issues after a password policy update. Most users were unable to access internal systems for 2 hours. IT resolved the issue by syncing the identity provider and notifying teams.')">
+              Insert Summary Demo
+            </button>
+            <button id="sendBtn" class="primary-btn">Send Message</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById("chatBox");
+    const userInput = document.getElementById("userInput");
+    const sendBtn = document.getElementById("sendBtn");
+
+    function fillPrompt(text) {
+      userInput.value = text;
+      userInput.focus();
+    }
+
+    function addMessage(content, className) {
+      const msg = document.createElement("div");
+      msg.className = `message ${className}`;
+
+      const label = document.createElement("div");
+      label.className = "message-label";
+      label.innerText = className === "user" ? "You" : "PolicyPilot";
+
+      const body = document.createElement("div");
+      body.className = "message-body";
+      body.innerText = content;
+
+      msg.appendChild(label);
+      msg.appendChild(body);
+
+      chatBox.appendChild(msg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    async function sendMessage() {
+      const message = userInput.value.trim();
+      if (!message) return;
+
+      addMessage(message, "user");
+      userInput.value = "";
+
+      try {
+        const res = await fetch("/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ message })
+        });
+
+        const data = await res.json();
+        addMessage(data.reply, "bot");
+      } catch (error) {
+        addMessage("Something went wrong while contacting the agent.", "bot");
+      }
+    }
+
+    sendBtn.addEventListener("click", sendMessage);
+
+    userInput.addEventListener("keydown", function(e) {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+[
+  {
+    "category": "HR Leave Policy",
+    "keywords": ["leave policy", "annual leave", "casual leave", "vacation leave"],
+    "answer": "Employees are eligible for annual leave subject to manager approval. Leave requests should be submitted in advance through the HR system.",
+    "contact": "hr@company.com"
+  },
+  {
+    "category": "Remote Work Policy",
+    "keywords": ["remote work", "work from home", "wfh policy", "hybrid work"],
+    "answer": "Employees may work remotely based on team policy and manager approval. Sensitive company data must only be accessed through approved systems.",
+    "contact": "it-security@company.com"
+  },
+  {
+    "category": "Password Reset",
+    "keywords": ["password reset", "reset password", "forgot password", "login issue"],
+    "answer": "Use the company self-service password reset portal first. If unsuccessful, contact IT support with your employee ID.",
+    "contact": "itsupport@company.com"
+  },
+  {
+    "category": "Laptop / Device Support",
+    "keywords": ["laptop support", "device issue", "broken laptop", "system issue"],
+    "answer": "For hardware or laptop issues, create a helpdesk ticket and include the device serial number, issue summary, and urgency.",
+    "contact": "helpdesk@company.com"
+  },
+  {
+    "category": "HR Contact",
+    "keywords": ["contact hr", "hr help", "hr support"],
+    "answer": "For HR-related support, email the HR operations team with your employee ID and request details.",
+    "contact": "hr@company.com"
+  }
+]s
