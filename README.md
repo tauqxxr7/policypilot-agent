@@ -8,62 +8,40 @@
 
 [![Source Code](https://img.shields.io/badge/Source_Code-111827?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tauqxxr7/policypilot-agent)
 
-## Overview
-
-PolicyPilot Agent is a production-aware AI support assistant built for internal enterprise workflows. It is designed to help teams answer policy questions, guide users through support issues, summarize text, and refuse unsupported or unsafe requests.
-
-This project demonstrates more than just a chat UI. It shows intent detection, tool routing, local knowledge lookup, safety controls, and model-backed assistance in a clean full-stack flow.
-
 ## Problem
 
-Internal support teams lose time answering repetitive questions, routing common requests, and summarizing issue context. Generic chatbots often hallucinate policies or respond beyond their safe operating scope.
+Internal support teams repeatedly answer the same policy and IT questions, route common requests, and summarize issue context. Generic chatbots often overstep policy boundaries or answer without proper grounding.
 
 ## Solution
 
-PolicyPilot solves that by combining:
+PolicyPilot Agent is a production-aware support assistant that combines FAQ retrieval, policy assistance, summarization, routing, and safety controls into one focused workflow.
 
-- FAQ and policy retrieval from local structured data
-- Query routing based on user intent
-- Summarization for support or incident text
-- Guardrails that refuse unsupported prompts
-- Gemini-powered fallback responses for valid in-scope requests
+## Features
 
-## Core Features
-
-- Enterprise FAQ and policy assistance
-- Password reset and IT support guidance
-- Remote work and leave-policy query handling
-- Summarization flow for pasted text
-- Safe refusal layer for unsupported requests
-- Lightweight dashboard-style interface
-
-## Architecture
-
-```text
-User Query
-  -> Flask app
-  -> intent detection and tool selection
-  -> FAQ lookup or summarization or Gemini response
-  -> safety validation
-  -> final response in UI
-```
+- FAQ lookup
+- Policy assistance
+- Support routing
+- Text summarization
+- Safety refusal layer
+- Lightweight dashboard-style UI
 
 ## Tech Stack
 
 - Frontend: HTML, CSS, JavaScript
 - Backend: Flask
 - AI layer: Gemini API
-- Knowledge layer: local JSON FAQ store
-- Logic layer: intent routing plus safety controls
+- Data layer: local JSON FAQ store
+- Logic layer: intent routing plus safety checks
 
-## Example Queries
+## Architecture
 
-- `What is the leave policy?`
-- `How do I reset my password?`
-- `What is the remote work policy?`
-- `summarize: [paste text here]`
+```text
+User query -> Flask app -> intent detection -> FAQ lookup or summarization or Gemini response -> safety checks -> UI response
+```
 
-## Local Setup
+This project is designed for real-world usage and demonstrates a production-style workflow with routing, safety, and grounded responses.
+
+## Setup
 
 ### 1. Clone the repository
 
@@ -91,14 +69,6 @@ pip install flask python-dotenv google-genai
 copy .env.example .env
 ```
 
-`.env`:
-
-```env
-GEMINI_API_KEY=your_gemini_api_key
-FLASK_ENV=development
-PORT=5000
-```
-
 ### 5. Run the app
 
 ```bash
@@ -107,33 +77,37 @@ python app.py
 
 Open the app at `http://127.0.0.1:5000`
 
-## Screenshots
+## Environment Variables
 
-### Main Dashboard
+```env
+GEMINI_API_KEY=your_api_key_here
+FLASK_ENV=development
+PORT=5000
+```
 
-`Add screenshot: docs/screenshots/dashboard.png`
+## Screenshots / Demo
 
-### FAQ / Policy Response State
+- Main dashboard: `Add screenshot here`
+- FAQ or policy response flow: `Add screenshot here`
+- Summarization demo: `Add screenshot here`
 
-`Add screenshot: docs/screenshots/faq-response.png`
+## Live Demo
 
-### Summarization Flow
-
-`Add screenshot: docs/screenshots/summarization.png`
-
-## Demo Placeholder
-
-- Live demo: `Add deployment URL here`
+- Demo: `Deployment in progress`
 - Source code: `https://github.com/tauqxxr7/policypilot-agent`
 
 ## Future Improvements
 
 - Database-backed retrieval
-- Ticketing or helpdesk integrations
+- Helpdesk or ticketing integrations
 - Authentication and role-aware access control
-- Logging, analytics, and monitoring
-- Stronger enterprise workflow automation
+- Logging and monitoring
+- Expanded enterprise workflow automation
 
-## License
+## Author
 
-Built for experimentation, AI workflow demos, and portfolio use.
+Built by **Tauqeer Bharde** as an AI support workflow project focused on safe responses, maintainable architecture, and deployability.
+
+## Suggested GitHub Topics
+
+`ai, genai, llm, gemini-api, full-stack, python, flask, support-agent, faq-bot, internal-tools`
