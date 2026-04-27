@@ -1,6 +1,6 @@
 # PolicyPilot Agent
 
-> AI-powered enterprise support assistant for FAQ lookup, policy guidance, routing, summarization, and safe responses.
+> AI support agent for policy assistance, FAQ handling, routing, summarization, and safe response workflows.
 
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org/)
 [![Flask](https://img.shields.io/badge/Flask-0F172A?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
@@ -40,6 +40,13 @@ User query -> Flask app -> intent detection -> FAQ lookup or summarization or Ge
 ```
 
 This project is designed for real-world usage and demonstrates a production-style workflow with routing, safety, and grounded responses.
+
+## ⚙️ Engineering Notes
+
+- Built with clear frontend/backend/API separation
+- Designed for deployable architecture (Vercel + Render style)
+- Uses modular structure for scalability and maintainability
+- Focused on real-world use cases, not isolated demos
 
 ## Setup
 
@@ -85,16 +92,13 @@ FLASK_ENV=development
 PORT=5000
 ```
 
-## Screenshots / Demo
+## 📸 Screenshots
 
-- Main dashboard: `Add screenshot here`
-- FAQ or policy response flow: `Add screenshot here`
-- Summarization demo: `Add screenshot here`
+Screenshots coming soon
 
-## Live Demo
+## 🚀 Deployment
 
-- Demo: `Deployment in progress`
-- Source code: `https://github.com/tauqxxr7/policypilot-agent`
+Deployment in progress (planned: Vercel / Render)
 
 ## Future Improvements
 
@@ -110,4 +114,4 @@ Built by **Tauqeer Bharde** as an AI support workflow project focused on safe re
 
 ## Suggested GitHub Topics
 
-`ai, genai, llm, gemini-api, full-stack, python, flask, support-agent, faq-bot, internal-tools`
+`ai-agent, policy-assistant, enterprise-ai, faq-bot, python, genai, llm, automation, support-agent`
